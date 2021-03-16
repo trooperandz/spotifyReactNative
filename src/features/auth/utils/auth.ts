@@ -1,8 +1,9 @@
-import {authorize, refresh} from 'react-native-app-auth';
+import { authorize, refresh } from 'react-native-app-auth';
 
 const authConfig = {
   clientId: 'f0ee9f555949461d8071fbf539aa3fbe',
-  clientSecret: 'e71a203009fc408d82aadad412ce0fc0',
+  // TODO: remove
+  // clientSecret: 'e71a203009fc408d82aadad412ce0fc0',
   redirectUrl: 'com.spotifyreactnative://oauthredirect',
   scopes: [
     'playlist-read-private',
@@ -14,7 +15,8 @@ const authConfig = {
   ],
   serviceConfiguration: {
     authorizationEndpoint: 'https://accounts.spotify.com/authorize',
-    tokenEndpoint: 'https://accounts.spotify.com/api/token',
+    tokenEndpoint:
+      'https://us-central1-echobindchallenge.cloudfunctions.net/api/user/authentication',
   },
 };
 

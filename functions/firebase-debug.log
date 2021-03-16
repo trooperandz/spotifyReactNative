@@ -1,0 +1,25 @@
+[debug] [2021-03-16T19:29:06.826Z] ----------------------------------------------------------------------
+[debug] [2021-03-16T19:29:06.827Z] Command:       /Users/matthewholland/.nvm/versions/node/v12.16.1/bin/node /Users/matthewholland/.nvm/versions/node/v12.16.1/bin/firebase deploy
+[debug] [2021-03-16T19:29:06.827Z] CLI Version:   9.6.1
+[debug] [2021-03-16T19:29:06.827Z] Platform:      darwin
+[debug] [2021-03-16T19:29:06.828Z] Node Version:  v12.16.1
+[debug] [2021-03-16T19:29:06.828Z] Time:          Tue Mar 16 2021 14:29:06 GMT-0500 (Central Daylight Time)
+[debug] [2021-03-16T19:29:06.828Z] ----------------------------------------------------------------------
+[debug] [2021-03-16T19:29:06.828Z] 
+[debug] [2021-03-16T19:29:06.836Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-03-16T19:29:06.836Z] > authorizing via signed-in user
+[debug] [2021-03-16T19:29:06.836Z] [iam] checking project echobindchallenge for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2021-03-16T19:29:06.838Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/echobindchallenge:testIamPermissions  
+ {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2021-03-16T19:29:06.999Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Tue, 16 Mar 2021 19:29:06 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=81","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-03-16T19:29:07.000Z] >>> HTTP REQUEST POST https://iam.googleapis.com/v1/projects/echobindchallenge/serviceAccounts/echobindchallenge@appspot.gserviceaccount.com:testIamPermissions  
+ {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2021-03-16T19:29:07.119Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Tue, 16 Mar 2021 19:29:07 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-03-16T19:29:07.181Z] TypeError [ERR_INVALID_ARG_TYPE]: The "path" argument must be of type string. Received undefined
+    at validateString (internal/validators.js:117:11)
+    at Object.join (path.js:1039:7)
+    at Object.checkFunctionsSDKVersion [as fn] (/Users/matthewholland/.nvm/versions/node/v12.16.1/lib/node_modules/firebase-tools/lib/checkFirebaseSDKVersion.js:34:28)
+    at /Users/matthewholland/.nvm/versions/node/v12.16.1/lib/node_modules/firebase-tools/lib/command.js:161:30
+    at processTicksAndRejections (internal/process/task_queues.js:97:5)
+[error] 
+[error] Error: An unexpected error has occurred.
