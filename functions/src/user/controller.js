@@ -5,14 +5,14 @@ const SpotifyWebApi = require('spotify-web-api-node');
 const spotifyConfig = {
   clientId: 'f0ee9f555949461d8071fbf539aa3fbe',
   clientSecret: 'e71a203009fc408d82aadad412ce0fc0',
-  redirectUri: 'com.spotifyreactnative://oauthredirect',
+  redirectUri: 'com.spotifyreactnative:/oauth',
 };
 
 const spotifyApi = new SpotifyWebApi(spotifyConfig);
 
 async function proxySpotifyToken(_req, res) {
-  console.log('_req: ', _req);
-  console.log('res: ', res);
+  // console.log('_req: ', _req);
+  // console.log('res: ', res);
   // Retrieve code from request
   const code = _req.body.code;
   const refreshToken = _req.body.refresh_token;
@@ -42,6 +42,7 @@ async function proxySpotifyToken(_req, res) {
 
   // Retrieve new refresh token and access token
   if (code) {
+    console.log('received code: ', code);
     spotifyApi
       .authorizationCodeGrant(code)
       .then(

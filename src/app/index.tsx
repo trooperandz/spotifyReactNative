@@ -1,10 +1,18 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { Provider } from 'react-redux';
 
-import LoginScreen from 'features/auth/screens/LoginScreen';
+// import { store, persistor } from './store';
+import store from './store';
+
+// import LoginScreen from 'features/auth/screens/Login';
+import RootNavigation from 'navigations';
 
 const App = () => {
-  return <LoginScreen />;
+  return (
+    <Provider store={store}>
+      <RootNavigation />
+    </Provider>
+  );
 };
 
 export default App;
