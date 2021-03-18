@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { View, Text, SafeAreaView } from 'react-native';
 
@@ -15,20 +15,22 @@ export const Albums: FC = () => {
   const dispatch = useDispatch();
   const { albumList } = useSelector((state: AlbumsState) => state.albums);
 
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
-    dispatch(getUserAlbums());
+    dispatch(getUserAlbums(() => setIsLoading(false)));
   }, [dispatch]);
 
   const handleLogOut = () => dispatch(setAccessToken({ accessToken: '' }));
 
   return (
     <SafeAreaView style={styles.safeArea}>
-      {albumList.length > 0 ? (
-        <AlbumList albums={albumList} />
-      ) : (
+      {isLoading ? (
         <View style={styles.container} testID={LOADER_TEST_ID}>
           <Text>Loading...</Text>
         </View>
+      ) : (
+        <AlbumList albums={albumList} />
       )}
       <Button onPress={handleLogOut} style={styles.button}>
         Log Out

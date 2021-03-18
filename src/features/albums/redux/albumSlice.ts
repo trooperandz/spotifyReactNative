@@ -19,7 +19,7 @@ const albumsSlice = createSlice({
 
 export const { setAlbumList } = albumsSlice.actions;
 
-export const getUserAlbums = () => {
+export const getUserAlbums = (callback?: () => void) => {
   return async (dispatch: Dispatch, getState: () => AuthState) => {
     try {
       const {
@@ -39,8 +39,10 @@ export const getUserAlbums = () => {
       );
 
       dispatch(setAlbumList({ albumList: response.data.items }));
+      callback && callback();
     } catch (error) {
       console.error(error);
+      callback && callback();
     }
   };
 };
