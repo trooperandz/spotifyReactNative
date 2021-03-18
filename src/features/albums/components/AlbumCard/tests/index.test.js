@@ -17,12 +17,15 @@ const defaultProps = {
 const renderComponent = () => render(<AlbumCard {...defaultProps} />);
 
 describe('AlbumCard', () => {
-  it('should render the correct album title, artist, and date text', () => {
+  it('should render the correct album title and description', () => {
     const { getByText } = renderComponent();
 
     expect(getByText(defaultProps.albumName)).toBeDefined();
-    expect(getByText(defaultProps.artistName)).toBeDefined();
-    expect(getByText(defaultProps.releaseDate)).toBeDefined();
+    expect(
+      getByText(
+        `${defaultProps.artistName} | ${defaultProps.releaseDate.slice(0, 4)}`,
+      ),
+    ).toBeDefined();
   });
 
   it('should call navigate with the correct params if the card is pressed', () => {
