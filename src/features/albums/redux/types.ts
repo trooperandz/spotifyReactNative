@@ -1,9 +1,3 @@
-export type AlbumsState = {
-  albums: {
-    albumList: [];
-  };
-};
-
 export type Album = {
   album: {
     artists: {
@@ -17,6 +11,12 @@ export type Album = {
     }[];
     name: string;
     release_date: string;
+  };
+};
+
+export type AlbumsState = {
+  albums: {
+    albumList: Album[];
   };
 };
 

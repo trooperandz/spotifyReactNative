@@ -6,13 +6,14 @@ import { AlbumList } from 'features/albums/components/AlbumList';
 import { Button } from 'components/Button';
 import { setAccessToken } from 'features/auth/redux/authSlice';
 import { getUserAlbums } from 'features/albums/redux/albumSlice';
+import { AlbumsState } from 'features/albums/redux/types';
 import { styles } from './styles';
 
 export const LOADER_TEST_ID = 'loader';
 
 export const Albums: FC = () => {
   const dispatch = useDispatch();
-  const { albumList } = useSelector((state: any) => state.albums);
+  const { albumList } = useSelector((state: AlbumsState) => state.albums);
 
   useEffect(() => {
     dispatch(getUserAlbums());
