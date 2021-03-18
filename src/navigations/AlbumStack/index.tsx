@@ -1,13 +1,13 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import { AlbumStackParamList } from './types';
-import Albums from 'features/albums/screens/Albums';
-import AlbumNotes from 'features/albums/screens/AlbumNotes';
+import { Albums } from 'features/albums/screens/Albums';
+import { AlbumNotes } from 'features/albums/screens/AlbumNotes';
 
 const Stack = createStackNavigator<AlbumStackParamList>();
 
-const AuthStack = () => {
+export const AlbumStack: FC = () => {
   return (
     <Stack.Navigator initialRouteName="Albums">
       <Stack.Screen
@@ -29,5 +29,3 @@ const AuthStack = () => {
     </Stack.Navigator>
   );
 };
-
-export default AuthStack;

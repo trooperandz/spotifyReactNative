@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 
+import * as RootNavigation from 'navigations/utils';
 import { styles } from './styles';
 
 interface Props {
@@ -11,25 +12,32 @@ interface Props {
   releaseDate: string;
 }
 
-const AlbumCard = (props: Props) => {
+export const ALBUM_CARD_TEST_ID = 'album-card';
+
+export const AlbumCard: FC<Props> = props => {
   const { albumName, artistName, id, imageUrl, releaseDate } = props;
 
-  const handlePress = () => {
-    // TODO: navigate to AlbumNotes screen using id
+  const handleCardPress = () => {
+    RootNavigation.navigate('AlbumNotes', {
+      albumId: id,
+      albumName,
+      artistName,
+    });
   };
 
   return (
-    <TouchableOpacity onPress={handlePress} style={styles.container}>
-      <View style={styles.image}>
-        <Image source={{ uri: imageUrl }} width={64} height={64} />
-      </View>
+    <TouchableOpacity
+      onPress={handleCardPress}
+      style={styles.container}
+      testID={ALBUM_CARD_TEST_ID}>
+      <Image source={{ uri: imageUrl }} style={styles.image} />
+
       <View style={styles.albumInfo}>
         <Text style={styles.albumName}>{albumName}</Text>
-        <Text>{artistName}</Text>
-        <Text>{releaseDate}</Text>
+        <Text style={styles.description}>
+          {artistName} | {releaseDate.slice(0, 4)}
+        </Text>
       </View>
     </TouchableOpacity>
   );
 };
-
-export default AlbumCard;

@@ -1,28 +1,28 @@
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { View, Button } from 'react-native';
+import React, { FC } from 'react';
+import { useDispatch } from 'react-redux';
+import { View, SafeAreaView } from 'react-native';
 
+import { Button } from 'components/Button';
 import { authorizeSpotify } from 'features/auth/utils/auth';
 import { setAccessToken, setRefreshToken } from 'features/auth/redux/authSlice';
+import { styles } from './styles';
 
-const Login = () => {
-  const auth = useSelector((state: any) => state.auth);
+export const Login: FC = () => {
   const dispatch = useDispatch();
-
-  console.log('auth redux state: ', auth);
 
   const handleLoginPress = async () => {
     const authObject = await authorizeSpotify();
-    console.log({ authObject });
     dispatch(setAccessToken({ accessToken: authObject?.accessToken }));
     dispatch(setRefreshToken({ refreshToken: authObject?.refreshToken }));
   };
 
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Button onPress={handleLoginPress} title="Log In" />
-    </View>
+    <SafeAreaView style={styles.safeArea}>
+      <View style={styles.container}>
+        <Button onPress={handleLoginPress} style={styles.button}>
+          Log In With Spotify
+        </Button>
+      </View>
+    </SafeAreaView>
   );
 };
-
-export default Login;

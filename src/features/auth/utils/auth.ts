@@ -16,10 +16,6 @@ const authConfig = {
 export const authorizeSpotify = async () => {
   try {
     const result = await authorize(authConfig);
-    // alert(JSON.stringify(result));
-    console.log('refresh token: ', result.refreshToken);
-    console.log('access token: ', result.accessToken);
-
     return result;
   } catch (error) {
     console.error(error);

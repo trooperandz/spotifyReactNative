@@ -25,7 +25,7 @@ export const getUserAlbums = () => {
       const {
         auth: { accessToken },
       } = getState();
-      console.log('access token: ', accessToken);
+
       const response: AlbumsResponse = await axios.get(
         'https://api.spotify.com/v1/me/albums',
         {

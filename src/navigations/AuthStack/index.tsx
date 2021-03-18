@@ -1,24 +1,23 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import { AuthStackParamList } from './types';
-import Login from 'features/auth/screens/Login';
+import { Login } from 'features/auth/screens/Login';
+import { colors } from 'utils/colors';
 
 const Stack = createStackNavigator<AuthStackParamList>();
 
-const AuthStack = () => {
+export const AuthStack: FC = () => {
   return (
     <Stack.Navigator initialRouteName="Login">
       <Stack.Screen
         name="Login"
         component={Login}
         options={{
-          title: 'Spotify Login',
-          headerTitleStyle: { color: '#787878' },
+          title: 'Spotify Authentication',
+          headerTitleStyle: { color: colors.primary },
         }}
       />
     </Stack.Navigator>
   );
 };
-
-export default AuthStack;

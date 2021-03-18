@@ -3,7 +3,10 @@ import { RouteProp } from '@react-navigation/native';
 
 export type AlbumStackParamList = {
   Albums: undefined;
-  AlbumNotes: undefined;
+  AlbumNotes: {
+    albumId: string;
+    albumName: string;
+  };
 };
 
 export type AlbumStackNavProps<T extends keyof AlbumStackParamList> = {
